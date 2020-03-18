@@ -7,7 +7,6 @@ class PlayerNode(SQLAlchemyObjectType):
 	class Meta:
 		model = PlayerModel
 		interface = (relay.Node, )
-		# exclude_fields = ('id',)
 
 
 class PlayerConnection(relay.Connection):
