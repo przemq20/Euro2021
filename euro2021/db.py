@@ -18,6 +18,7 @@ Session = scoped_session(sessionmaker(
 ))
 Base.query = Session.query_property()
 
+
 def close_db(e=None) -> None:
 	Session.remove()
 
