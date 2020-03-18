@@ -1,6 +1,6 @@
-from sqlalchemy import Column, Integer, String, Date
-
 from euro2021.db import Base
+
+from sqlalchemy import Column, Integer, String, Date
 
 
 class PlayerModel(Base):
