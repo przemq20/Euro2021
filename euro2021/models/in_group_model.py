@@ -1,6 +1,6 @@
 from sqlalchemy import Table, Column, Integer, ForeignKey
 
-from db import Base
+from euro2021.db import Base
 
 in_group_table = Table(
     'in_group', Base.metadata,

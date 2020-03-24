@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship
 from euro2021.db import Base
 
 
-class MatchModel(Base):
+class PhaseModel(Base):
     __tablename__ = 'phase'
 
     id = Column(Integer, primary_key=True)

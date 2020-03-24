@@ -1,16 +1,16 @@
 from sqlalchemy.orm import relationship
 
-from db import Base
-from models.in_group_model import in_group_table
-from models.team_model import TeamModel
-from models.phase_model import PhaseModel
-from models.tournament_model import TournamentModel
+from euro2021.db import Base
+from euro2021.models.in_group_model import in_group_table
+from euro2021.models.team_model import TeamModel
+from euro2021.models.phase_model import PhaseModel
+from euro2021.models.tournament_model import TournamentModel
 
 from sqlalchemy import Column, Integer, String, ForeignKey, Date, text, TIMESTAMP, Text
 from sqlalchemy.ext.associationproxy import association_proxy
 
 
-class GroupModel(Base):
+class TournamentScheduleModel(Base):
     __tablename__ = 'tournament_schedule'
 
     id = Column(Integer, primary_key=True)

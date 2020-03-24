@@ -1,8 +1,8 @@
 from sqlalchemy.orm import relationship
 
-from db import Base
-from models.in_group_model import in_group_table
-from models.team_model import TeamModel
+from euro2021.db import Base
+from euro2021.models.in_group_model import in_group_table
+from euro2021.models.team_model import TeamModel
 
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.ext.associationproxy import association_proxy

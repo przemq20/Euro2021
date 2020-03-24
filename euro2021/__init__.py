@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_graphql import GraphQLView
 import db
-from schemes.schema import schema
+from euro2021.schemes.schema import schema
 
 
 def create_app(config=None):
