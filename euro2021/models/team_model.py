@@ -11,6 +11,3 @@ class TeamModel(Base):
 	team_name = Column(String(255), nullable=False)
 
 	players = relationship('PlayerModel', secondary=in_team_table, back_populates='teams')
-
-
-
