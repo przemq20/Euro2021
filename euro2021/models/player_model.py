@@ -20,4 +20,3 @@ class PlayerModel(Base):
 	teams = relationship('TeamModel', secondary=in_team_table, back_populates='players')
 
 	matches = association_proxy('matches_info', 'match')
-
