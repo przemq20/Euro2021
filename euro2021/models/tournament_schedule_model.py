@@ -14,8 +14,8 @@ class TournamentScheduleModel(Base):
     __tablename__ = 'tournament_schedule'
 
     id = Column(Integer, primary_key=True)
-    tournament_id = Column(Integer, ForeignKey(tournament.id), nullable=False)
-    phase_id = Column(Integer, ForeignKey(phase.id), nullable=False)
+    tournament_id = Column(Integer, ForeignKey('tournament.id'), nullable=False)
+    phase_id = Column(Integer, ForeignKey('phase.id'), nullable=False)
     match_time = Column(TIMESTAMP,ForeignKey('match.id'), nullable=False)
     match_location = Column(Text, nullable=False)
     team1_id = Column(Integer, ForeignKey('team.id'), nullable=False)
