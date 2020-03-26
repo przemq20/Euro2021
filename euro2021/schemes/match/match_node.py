@@ -7,6 +7,7 @@ class MatchNode(SQLAlchemyObjectType):
 	class Meta:
 		model = MatchModel
 		interface = (relay.Node, )
+		exclude_fields = ("tournament_schedule_id",)
 
 
 class MatchConnection(relay.Connection):
