@@ -2,10 +2,9 @@ from sqlalchemy.orm import relationship
 
 from euro2021.db import Base
 from euro2021.models.in_group_model import in_group_table
-from euro2021.models.team_model import TeamModel
+import euro2021.models.tournament_model
 
 from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.ext.associationproxy import association_proxy
 
 
 class GroupModel(Base):
@@ -15,5 +14,5 @@ class GroupModel(Base):
     group_name = Column(String(64), nullable=False)
     tournament_id = Column(Integer, ForeignKey('tournament.id'), nullable=False)
 
-    tournament_info = relationship('TournamentModel', back_populates='group_info')
-    groups = relationship('InGroupModel', secondary=in_group_table, back_populates='?')
+    tournament = relationship('TournamentModel', back_populates='groups')
+    teams = relationship('TeamModel', secondary=in_group_table, back_populates='groups')

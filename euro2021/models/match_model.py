@@ -12,10 +12,11 @@ class MatchModel(Base):
 	start_time = Column(TIMESTAMP, nullable=False)
 	end_time = Column(TIMESTAMP, nullable=True)
 	location = Column(Text, nullable=False)
-	tournament_schedule_id = Column(Integer, nullable=True)
+	tournament_schedule_id = Column(Integer, ForeignKey('tournament_schedule.id'), nullable=True)
 	goals_team_1 = Column(Integer, nullable=False)
 	goals_team_2 = Column(Integer, nullable=False)
 
-	players_info = relationship("InMatchModel", back_populates='match')
+	players_info = relationship('InMatchModel', back_populates='match')
+	schedule = relationship('TournamentScheduleModel', back_populates='match')
 
 	players = association_proxy('player_info', 'match')
