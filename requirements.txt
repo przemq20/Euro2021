@@ -4,4 +4,4 @@ psycopg2
 graphene
 graphene-sqlalchemy
 Flask-GraphQL
-
+flask_sqlalchemy

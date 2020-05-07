@@ -1,27 +1,14 @@
-import os
-
-from flask import Flask
-
-from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy.model import BindMetaMixin, Model
+from sqlalchemy.ext.declarative import DeclarativeMeta, declarative_base
 
 
-Base = declarative_base()
-
-engine = create_engine(os.environ['SQLALCHEMY_URI'])
-
-Session = scoped_session(sessionmaker(
-	autocommit=False,
-	autoflush=False,
-	bind=engine
-))
-Base.query = Session.query_property()
+class NoNameMeta(BindMetaMixin, DeclarativeMeta):
+	pass
 
 
-def close_db(e=None) -> None:
-	Session.remove()
-
-
-def init_app(app: Flask) -> None:
-	app.teardown_appcontext(close_db)
+db = SQLAlchemy(
+	model_class=declarative_base(
+		cls=Model, metaclass=NoNameMeta, name='Model'
+	)
+)

@@ -1,19 +1,15 @@
-from sqlalchemy.orm import relationship
-
-from euro2021.db import Base
+from euro2021.db import db
 import euro2021.models.tournament_schedule_model
 
-from sqlalchemy import Column, Integer, String, ForeignKey, Date
 
-
-class TournamentModel(Base):
+class TournamentModel(db.Model):
     __tablename__ = 'tournament'
 
-    id = Column(Integer, primary_key=True)
-    tournament_name = Column(String(255), nullable=False)
-    start_date = Column(Date, nullable=False)
-    end_date = Column(Date, nullable=False)
-    location = Column(String, ForeignKey('tournament.id'), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    tournament_name = db.Column(db.String(255), nullable=False)
+    start_date = db.Column(db.Date, nullable=False)
+    end_date = db.Column(db.Date, nullable=False)
+    location = db.Column(db.String, db.ForeignKey('tournament.id'), nullable=False)
 
-    groups = relationship('GroupModel', back_populates='tournament')
-    schedules = relationship('TournamentScheduleModel', back_populates='tournament')
+    groups = db.relationship('GroupModel', back_populates='tournament')
+    schedules = db.relationship('TournamentScheduleModel', back_populates='tournament')

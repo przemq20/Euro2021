@@ -1,22 +1,20 @@
-from sqlalchemy import Column, Integer, TIMESTAMP, Text, ForeignKey, Table
 from sqlalchemy.ext.associationproxy import association_proxy
-from sqlalchemy.orm import relationship
 
-from euro2021.db import Base
+from euro2021.db import db
 
 
-class MatchModel(Base):
+class MatchModel(db.Model):
 	__tablename__ = 'match'
 
-	id = Column(Integer, primary_key=True)
-	start_time = Column(TIMESTAMP, nullable=False)
-	end_time = Column(TIMESTAMP, nullable=True)
-	location = Column(Text, nullable=False)
-	tournament_schedule_id = Column(Integer, ForeignKey('tournament_schedule.id'), nullable=True)
-	goals_team_1 = Column(Integer, nullable=False)
-	goals_team_2 = Column(Integer, nullable=False)
+	id = db.Column(db.Integer, primary_key=True)
+	start_time = db.Column(db.TIMESTAMP, nullable=False)
+	end_time = db.Column(db.TIMESTAMP, nullable=True)
+	location = db.Column(db.Text, nullable=False)
+	tournament_schedule_id = db.Column(db.Integer, db.ForeignKey('tournament_schedule.id'), nullable=True)
+	goals_team_1 = db.Column(db.Integer, nullable=False)
+	goals_team_2 = db.Column(db.Integer, nullable=False)
 
-	players_info = relationship('InMatchModel', back_populates='match')
-	schedule = relationship('TournamentScheduleModel', back_populates='match')
+	players_info = db.relationship('InMatchModel', back_populates='match')
+	schedule = db.relationship('TournamentScheduleModel', back_populates='match')
 
 	players = association_proxy('player_info', 'match')

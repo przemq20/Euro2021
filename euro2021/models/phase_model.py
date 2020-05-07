@@ -1,10 +1,8 @@
-from sqlalchemy import Column, Integer, String
-
-from euro2021.db import Base
+from euro2021.db import db
 
 
-class PhaseModel(Base):
+class PhaseModel(db.Model):
     __tablename__ = 'phase'
 
-    id = Column(Integer, primary_key=True)
-    phase_name = Column(String(64), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    phase_name = db.Column(db.String(64), nullable=False)
