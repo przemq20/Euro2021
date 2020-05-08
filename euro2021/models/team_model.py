@@ -12,7 +12,7 @@ class TeamModel(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	team_name = db.Column(db.String(255), nullable=False)
 
-	players = db.relationship('PlayerModel', secondary=in_team_table, back_populates='teams')
+	players = db.relationship('PlayerModel', secondary=in_team_table, lazy='dynamic', uselist=True, back_populates='teams')
 	groups = db.relationship('GroupModel', secondary=in_group_table, back_populates='teams')
 
 	@hybrid_property

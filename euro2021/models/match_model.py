@@ -1,5 +1,6 @@
 from sqlalchemy.ext.associationproxy import association_proxy
 
+from euro2021.models import in_match_model
 from euro2021.db import db
 
 
