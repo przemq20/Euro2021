@@ -17,7 +17,7 @@ class PlayerModel(Base):
 	birth_date = Column(Date, nullable=False)
 
 	matches_info = relationship('InMatchModel', back_populates='player')
+	matches_info1 = relationship('InMatchStatisticsModel', back_populates='player1')
 	teams = relationship('TeamModel', secondary=in_team_table, back_populates='players')
 
 	matches = association_proxy('matches_info', 'match')
-

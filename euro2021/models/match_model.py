@@ -17,5 +17,6 @@ class MatchModel(Base):
 	goals_team_2 = Column(Integer, nullable=False)
 
 	players_info = relationship("InMatchModel", back_populates='match')
+	players_info1 = relationship("InMatchStatisticsModel", back_populates='match')
 
 	players = association_proxy('player_info', 'match')
