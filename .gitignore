@@ -94,3 +94,4 @@ pyvenv.cfg
 bin/
 lib64
 *sqlite
+/euro2021/instance/
