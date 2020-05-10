@@ -2,7 +2,6 @@ from euro2021.db import db
 import euro2021.models.phase_model
 
 
-
 class TournamentScheduleModel(db.Model):
     __tablename__ = 'tournament_schedule'
 
@@ -19,4 +18,3 @@ class TournamentScheduleModel(db.Model):
     match = db.relationship('MatchModel', back_populates='schedule')
     team_1 = db.relationship('TeamModel', foreign_keys=[team1_id], backref='scheduled_matches_as_1')
     team_2 = db.relationship('TeamModel', foreign_keys=[team2_id], backref='scheduled_matches_as_2')
-
