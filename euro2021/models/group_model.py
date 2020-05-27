@@ -12,3 +12,6 @@ class GroupModel(db.Model):
 
     tournament = db.relationship('TournamentModel', back_populates='groups')
     teams = db.relationship('TeamModel', secondary=in_group_table, back_populates='groups')
+
+    def __repr__(self):
+        return self.group_name

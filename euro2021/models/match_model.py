@@ -19,3 +19,6 @@ class MatchModel(db.Model):
 	schedule = db.relationship('TournamentScheduleModel', back_populates='match')
 
 	players = association_proxy('player_info', 'match')
+
+	def __repr__(self):
+		return "Match {}-{}".format(self.schedule.team_1.team_name, self.schedule.team_2.team_name)

@@ -25,3 +25,6 @@ class PlayerModel(db.Model):
 	)
 
 	matches = association_proxy('matches_info', 'match')
+
+	def __repr__(self):
+		return self.first_name + " " + self.last_name

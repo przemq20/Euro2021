@@ -12,6 +12,4 @@ class InMatchStatisticsModel(db.Model):
     minute = db.Column(db.Integer, nullable=True)
     action = db.Column(db.String(64), nullable=True)
 
-    match = db.relationship('MatchModel')
-    player = db.relationship('PlayerModel')
 

@@ -23,3 +23,6 @@ class TeamModel(db.Model):
 		secondaryjoin='and_(PlayerModel.id==in_team.c.player_id, in_team.c.last_game == None)',
 		viewonly=True
 	)
+
+	def __repr__(self):
+		return self.team_name

@@ -13,3 +13,6 @@ class TournamentModel(db.Model):
 
     groups = db.relationship('GroupModel', back_populates='tournament')
     schedules = db.relationship('TournamentScheduleModel', back_populates='tournament')
+
+    def __repr__(self):
+        return self.tournament_name
