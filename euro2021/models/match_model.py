@@ -16,7 +16,6 @@ class MatchModel(db.Model):
 	goals_team_2 = db.Column(db.Integer, nullable=False)
 
 	players_info = db.relationship('InMatchModel', back_populates='match')
-	players_info1 = db.relationship('InMatchStatisticsModel', back_populates='match1')
 	schedule = db.relationship('TournamentScheduleModel', back_populates='match')
 
 	players = association_proxy('player_info', 'match')

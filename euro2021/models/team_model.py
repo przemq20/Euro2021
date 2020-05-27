@@ -15,6 +15,11 @@ class TeamModel(db.Model):
 	players = db.relationship('PlayerModel', secondary=in_team_table, lazy='dynamic', uselist=True, back_populates='teams')
 	groups = db.relationship('GroupModel', secondary=in_group_table, back_populates='teams')
 
-	@hybrid_property
-	def scheduled_matches(self):
-		return self.scheduled_matches_as_1 + self.scheduled_matches_as_2
+	current_players = db.relationship(
+		'PlayerModel',
+		secondary=in_team_table,
+		uselist=True,
+		primaryjoin='TeamModel.id==in_team.c.team_id',
+		secondaryjoin='and_(PlayerModel.id==in_team.c.player_id, in_team.c.last_game == None)',
+		viewonly=True
+	)

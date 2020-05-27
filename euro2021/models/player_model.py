@@ -14,7 +14,14 @@ class PlayerModel(db.Model):
 	birth_date = db.Column(db.Date, nullable=False)
 
 	matches_info = db.relationship('InMatchModel', back_populates='player')
-	matches_info1 = db.relationship('InMatchStatisticsModel', back_populates='player1')
 	teams = db.relationship('TeamModel', secondary=in_team_table, lazy='dynamic', uselist=True, back_populates='players')
+	current_team = db.relationship(
+		'TeamModel',
+		secondary=in_team_table,
+		uselist=False,
+		primaryjoin='and_(PlayerModel.id==in_team.c.player_id, in_team.c.last_game == None)',
+		secondaryjoin='TeamModel.id==in_team.c.team_id',
+		viewonly=True
+	)
 
 	matches = association_proxy('matches_info', 'match')
