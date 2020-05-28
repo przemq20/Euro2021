@@ -4,6 +4,9 @@ from euro2021.models.match_model import MatchModel
 
 
 class MatchNode(SQLAlchemyObjectType):
+	"""
+	Node that represents match
+	"""
 	class Meta:
 		model = MatchModel
 		interface = (relay.Node, )

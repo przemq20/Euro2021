@@ -5,6 +5,9 @@ from euro2021.models.tournament_schedule_model import TournamentScheduleModel
 
 
 class TournamentScheduleNode(SQLAlchemyObjectType):
+	"""
+	Node represents scheduled date for match
+	"""
 	class Meta:
 		model = TournamentScheduleModel
 		interface = (relay.Node, )

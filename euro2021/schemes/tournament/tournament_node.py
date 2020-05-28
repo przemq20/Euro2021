@@ -5,6 +5,9 @@ from euro2021.models.tournament_model import TournamentModel
 
 
 class TournamentNode(SQLAlchemyObjectType):
+	"""
+	Node that represents tournament
+	"""
 	class Meta:
 		model = TournamentModel
 		interface = (relay.Node, )

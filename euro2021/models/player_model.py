@@ -9,9 +9,9 @@ class PlayerModel(db.Model):
 	__tablename__ = 'player'
 
 	id = db.Column(db.Integer, primary_key=True)
-	first_name = db.Column(db.String(64), nullable=False)
-	last_name = db.Column(db.String(64), nullable=False)
-	birth_date = db.Column(db.Date, nullable=False)
+	first_name = db.Column(db.String(64), nullable=False, doc="player's first name")
+	last_name = db.Column(db.String(64), nullable=False, doc="player's last name")
+	birth_date = db.Column(db.Date, nullable=False, doc="player's birthday")
 
 	matches_info = db.relationship('InMatchModel', back_populates='player')
 	teams = db.relationship('TeamModel', secondary=in_team_table, lazy='dynamic', uselist=True, back_populates='players')

@@ -8,12 +8,16 @@ from euro2021.schemes.tournament_schedule.tournament_schedule_node import Tourna
 
 
 class TeamNode(SQLAlchemyObjectType):
+	"""
+	Node that represents team
+	"""
 	class Meta:
 		model = TeamModel
 		interface = (relay.Node, )
+		exclude_fields = ("scheduled_matches_as_1", "scheduled_matches_as_2")
 
-	groups = graphene.List(GroupNode)
-	scheduled_matches = graphene.List(TournamentScheduleNode)
+	groups = graphene.List(GroupNode, description="groups which team is in")
+	scheduled_matches = graphene.List(TournamentScheduleNode, description="matches scheduled for this team")
 
 	def resolve_scheduled_matches(self, info):
 		return self.scheduled_matches_as_1 + self.scheduled_matches_as_2

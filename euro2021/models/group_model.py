@@ -7,7 +7,7 @@ class GroupModel(db.Model):
     __tablename__ = 'groups'
 
     id = db.Column(db.Integer, primary_key=True)
-    group_name = db.Column(db.String(64), nullable=False)
+    group_name = db.Column(db.String(64), nullable=False, doc="group name")
     tournament_id = db.Column(db.Integer, db.ForeignKey('tournament.id'), nullable=False)
 
     tournament = db.relationship('TournamentModel', back_populates='groups')

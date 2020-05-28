@@ -8,8 +8,8 @@ class InMatchModel(db.Model):
 
 	player_id = db.Column(db.Integer, db.ForeignKey('player.id'), primary_key=True)
 	match_id = db.Column(db.Integer, db.ForeignKey('match.id'), primary_key=True)
-	started_at = db.Column(db.Time, nullable=True)
-	ended_at = db.Column(db.Time, nullable=True)
+	started_at = db.Column(db.Time, nullable=True, doc="time when player started playing")
+	ended_at = db.Column(db.Time, nullable=True, doc="time when player ended playing")
 
 	match = db.relationship('MatchModel', back_populates='players_info')
 	player = db.relationship('PlayerModel', back_populates='matches_info')

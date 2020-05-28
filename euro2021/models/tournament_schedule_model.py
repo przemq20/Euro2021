@@ -8,8 +8,8 @@ class TournamentScheduleModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     tournament_id = db.Column(db.Integer, db.ForeignKey('tournament.id'), nullable=False)
     phase_id = db.Column(db.Integer, db.ForeignKey('phase.id'), nullable=False)
-    match_time = db.Column(db.TIMESTAMP, nullable=False)
-    match_location = db.Column(db.String, nullable=False)
+    match_time = db.Column(db.TIMESTAMP, nullable=False, doc="planned start date of match")
+    match_location = db.Column(db.String, nullable=False, doc="planned location of match")
     team1_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=False)
     team2_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=False)
 

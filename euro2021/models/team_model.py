@@ -10,7 +10,7 @@ class TeamModel(db.Model):
 	__tablename__ = 'team'
 
 	id = db.Column(db.Integer, primary_key=True)
-	team_name = db.Column(db.String(255), nullable=False)
+	team_name = db.Column(db.String(255), nullable=False, doc="team name")
 
 	players = db.relationship('PlayerModel', secondary=in_team_table, lazy='dynamic', uselist=True, back_populates='teams')
 	groups = db.relationship('GroupModel', secondary=in_group_table, back_populates='teams')

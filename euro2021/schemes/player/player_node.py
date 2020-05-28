@@ -4,6 +4,9 @@ from euro2021.models.player_model import PlayerModel
 
 
 class PlayerNode(SQLAlchemyObjectType):
+	"""
+	Node that represents player
+	"""
 	class Meta:
 		model = PlayerModel
 		interface = (relay.Node, )

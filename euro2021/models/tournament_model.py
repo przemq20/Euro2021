@@ -6,10 +6,10 @@ class TournamentModel(db.Model):
     __tablename__ = 'tournament'
 
     id = db.Column(db.Integer, primary_key=True)
-    tournament_name = db.Column(db.String(255), nullable=False)
-    start_date = db.Column(db.Date, nullable=False)
-    end_date = db.Column(db.Date, nullable=False)
-    location = db.Column(db.String, db.ForeignKey('tournament.id'), nullable=False)
+    tournament_name = db.Column(db.String(255), nullable=False, doc="tournament name")
+    start_date = db.Column(db.Date, nullable=False, doc="start date of tournament")
+    end_date = db.Column(db.Date, nullable=False, doc="end date of tournament")
+    location = db.Column(db.String, db.ForeignKey('tournament.id'), nullable=False, doc="location of tournament")
 
     groups = db.relationship('GroupModel', back_populates='tournament')
     schedules = db.relationship('TournamentScheduleModel', back_populates='tournament')
