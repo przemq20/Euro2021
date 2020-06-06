@@ -1,4 +1,5 @@
 
+
 # EURO 2021
 
 Euro 2021 jest projektem umożliwiającym tworzenie własnej bazy turniejów sportowych. 
@@ -12,6 +13,8 @@ Do implementacji wykorzystaliśmy zmodyfikowany schemat ze strony [schemat bazy 
 Wykorzystana została darmowa baza danych PostgreSQL na serwerze [www.elephantsql.com](https://www.elephantsql.com/) 
 
 Modele w aplikacji zostały zaimplementowane przy użyciu języka Python z wykorzystaniem flask, SQLalchemy oraz graphene.
+
+Poszczególne modele zostały zaimplementowane [tutaj](../euro2021/models), natomiast grafowy model bazy [tutaj](../euro2021/schemes)
 
 # GraphQL
 ![The power of GraphQL directives - {Callstack} Blog](https://cdn-images-1.medium.com/max/960/1*TUzarF1NBCpga-8ahqzNHw.png)
