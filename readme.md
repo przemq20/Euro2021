@@ -16,7 +16,30 @@ Modele w aplikacji zostały zaimplementowane przy użyciu języka Python z wykor
 
 Poszczególne modele zostały zaimplementowane [tutaj](../euro2021/models), natomiast grafowy model bazy [tutaj](../euro2021/schemes)
 
-# GraphQL
+## Modele
+
+Każdy z modeli jest zbudowany w podobny sposób. Poniżej jako przykład pokazany jest model turnieju:
+
+``` python
+class TournamentModel(db.Model):
+    __tablename__ = 'tournament'
+
+    id = db.Column(db.Integer, primary_key=True)
+    tournament_name = db.Column(db.String(255), nullable=False, doc="tournament name")
+    start_date = db.Column(db.Date, nullable=False, doc="start date of tournament")
+    end_date = db.Column(db.Date, nullable=False, doc="end date of tournament")
+    location = db.Column(db.String, db.ForeignKey('tournament.id'), nullable=False, doc="location of tournament")
+
+    groups = db.relationship('GroupModel', back_populates='tournament')
+    schedules = db.relationship('TournamentScheduleModel', back_populates='tournament')
+
+    def __repr__(self):
+        return self.tournament_name
+```
+
+Model posiada dokładne odwzorowanie w bazie danych. Posiada on atrybuty (w tym przypadku jest ich pięć), oraz relacje między innymi modelami. Każdy atrybut posiada typ (liczba, ciąg znaków, data) oraz może posiadać dodatkowe opcje, takie jak określenie czy jest to klucz główny lub czy dany atrybut może być nullem.
+
+## GraphQL
 ![The power of GraphQL directives - {Callstack} Blog](https://cdn-images-1.medium.com/max/960/1*TUzarF1NBCpga-8ahqzNHw.png)
 
 GraphQL jest coraz popularniejszym sposobem udostępniania API. Zapewnia dostęp do danych w postaci grafu. Jego struktura zapytań opartych na JSON-ie pozwala na ograniczenie liczby danych przesyłanych z serwera do klientów docelowych. Pozwala bezproblemowo wysyłać wiele zapytań naraz oraz tworzyć zapytania kaskadowe. Eliminując częsty problem w REST-cie z zapytaniami n+1.
